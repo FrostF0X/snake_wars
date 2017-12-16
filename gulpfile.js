@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
 
-gulp.task('script', () =>
+gulp.task('build', () =>
     gulp.src('app/**')
         .pipe(babel({
             presets: ['env']
@@ -9,6 +9,8 @@ gulp.task('script', () =>
         .pipe(gulp.dest('dist'))
 );
 
-gulp.task('default', () =>
-    gulp.watch('app/**', ['script'])
+gulp.task('watch', () =>
+    gulp.watch('app/**', ['build'])
 );
+
+gulp.task('default', ['watch']);
