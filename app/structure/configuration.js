@@ -1,7 +1,3 @@
-import SnakeGordon from "../../snake-gordon/src/index";
-import BatmanSnake from "../../batman/index";
-import Michal from "../../snake/snake";
-
 export const TOP = "N";
 export const LEFT = "W";
 export const RIGHT = "E";
@@ -12,12 +8,6 @@ export const INITIAL_SNAKES = [
     {head: {x: 15, y: 45}, direction: RIGHT, length: 3},
     {head: {x: 45, y: 15}, direction: RIGHT, length: 3},
     {head: {x: 15, y: 45}, direction: RIGHT, length: 3},
-];
-
-export const PLAYERS_ALGORITHMS = [
-    SnakeGordon,
-    BatmanSnake,
-    Michal
 ];
 
 export const INITIAL_WALLS = [

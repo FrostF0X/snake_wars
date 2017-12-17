@@ -6,6 +6,7 @@ import {INITIAL_SNAKES, INITIAL_WALLS, PLAYERS_ALGORITHMS, SIZE, TIMEOUT} from "
 import PlayerCollection from "./player-collection";
 import Game from "./game";
 import Wall from "./wall";
+import SnakeLoader from "./snake-loader";
 
 export default class EveryFuckingThingFactory {
 
@@ -29,9 +30,21 @@ export default class EveryFuckingThingFactory {
     }
 
     createGame(io) {
-        const players = this.createPlayers();
-        const snakes = this.getPlayersSnakes(players);
-        return new Game(this.createBoard(snakes), players, TIMEOUT, io);
+        return new Promise(resolve => {
+            this.playersAlgorithms = [];
+
+            SnakeLoader.importAll().then(imports => {
+                console.log(imports);
+                Object.values(imports).forEach(value => {
+                    this.playersAlgorithms.push(value);
+                });
+
+                const players = this.createPlayers();
+                const snakes = this.getPlayersSnakes(players);
+
+                resolve(new Game(this.createBoard(snakes), players, TIMEOUT, io));
+            });
+        });
     }
 
     createBoard(snakes) {
@@ -55,11 +68,12 @@ export default class EveryFuckingThingFactory {
     }
 
     createPlayers() {
-        return new PlayerCollection([
-            new Player(0, "andrzej", this.createAlgorithmForPlayer(0), this.createSnakeForPlayer(0)),
-            new Player(1, "maciek", this.createAlgorithmForPlayer(1), this.createSnakeForPlayer(1)),
-            new Player(2, "mwl", this.createAlgorithmForPlayer(2), this.createSnakeForPlayer(2))
-        ]);
+        const players = [];
+        for (let i = 0; i < this.playersAlgorithms.length; i++) {
+            players.push(new Player(i, 'player' + i, this.createAlgorithmForPlayer(i), this.createSnakeForPlayer(i)));
+        }
+
+        return new PlayerCollection(players);
     }
 
 
@@ -80,6 +94,6 @@ export default class EveryFuckingThingFactory {
     }
 
     getAlgorithmForPlayer(index) {
-        return PLAYERS_ALGORITHMS[index];
+        return this.playersAlgorithms[index];
     }
 }

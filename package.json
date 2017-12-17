@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm run build && node index.js",
     "watch": "gulp watch",
     "build": "gulp build",
     "postinstall": "gulp build",
@@ -15,6 +15,7 @@
   "dependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es3": "^1.0.1",
     "express": "^4.16.2",
