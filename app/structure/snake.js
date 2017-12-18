@@ -3,8 +3,7 @@ import {Direction} from "../logic/direction";
 
 export default class Snake {
 
-    constructor(index, head, body, direction) {
-        this.index = index;
+    constructor(head, body, direction) {
         this.head = head;
         this.body = body;
         this.direction = direction;

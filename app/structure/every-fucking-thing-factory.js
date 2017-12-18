@@ -2,49 +2,38 @@ import {Direction} from "../logic/direction";
 import Snake from "./snake";
 import Board from "./board";
 import Player from "./player";
-import {INITIAL_SNAKES, INITIAL_WALLS, PLAYERS_ALGORITHMS, SIZE, TIMEOUT} from "./configuration";
+import {INITIAL_SNAKES_DATA, INITIAL_WALLS, SIZE, TIMEOUT, SNAKES_DIR, INDEX_FILE} from "./configuration";
 import PlayerCollection from "./player-collection";
 import Game from "./game";
 import Wall from "./wall";
-import SnakeLoader from "./snake-loader";
+import AlgorithmLoader from "./algorithm-loader";
 
 export default class EveryFuckingThingFactory {
 
-    createPlayersAlgorithm(index, snakeSettings, Algorithm) {
+    createAlgorithm(index, configuration, Algorithm) {
         return new Algorithm({
             type: "snake",
-            start: snakeSettings,
+            start: configuration,
             timeout: TIMEOUT,
             board: SIZE,
             you: index,
         });
     }
 
-    createSnakeFromConfiguration(index, configuration) {
+    createSnake(configuration) {
         const head = configuration.head;
         const body = [];
         for (let i = 0; i < configuration.length; i++) {
             body.push(Direction.createMovedPointInDirection(head, Direction.getOpposite(configuration.direction)));
         }
-        return new Snake(index, head, body, configuration.direction);
+        return new Snake(head, body, configuration.direction);
     }
 
     createGame(io) {
-        return new Promise(resolve => {
-            this.playersAlgorithms = [];
+        const players = this.createPlayers();
+        const snakes = this.getPlayersSnakes(players);
 
-            SnakeLoader.importAll().then(imports => {
-                console.log(imports);
-                Object.values(imports).forEach(value => {
-                    this.playersAlgorithms.push(value);
-                });
-
-                const players = this.createPlayers();
-                const snakes = this.getPlayersSnakes(players);
-
-                resolve(new Game(this.createBoard(snakes), players, TIMEOUT, io));
-            });
-        });
+        return new Game(this.createBoard(snakes), players, TIMEOUT, io);
     }
 
     createBoard(snakes) {
@@ -69,31 +58,34 @@ export default class EveryFuckingThingFactory {
 
     createPlayers() {
         const players = [];
-        for (let i = 0; i < this.playersAlgorithms.length; i++) {
-            players.push(new Player(i, 'player' + i, this.createAlgorithmForPlayer(i), this.createSnakeForPlayer(i)));
+        const algorithms = AlgorithmLoader.load(SNAKES_DIR, INDEX_FILE);
+        const maxSnakes = INITIAL_SNAKES_DATA.length;
+
+        if (algorithms.length > maxSnakes) {
+            throw new Error(`I refuse to let more than ${maxSnakes} snakes to the game! Don't ask me why ;-(`);
         }
+
+        algorithms.forEach(algorithm => {
+            const AlgorithmConstructor = algorithm.constructor;
+            const name = algorithm.name;
+            const index = players.length;
+            const initialSnakeData = this.getInitialSnakeData(index);
+
+            players.push(new Player(
+                name,
+                this.createAlgorithm(index, initialSnakeData, AlgorithmConstructor),
+                this.createSnake(initialSnakeData))
+            );
+        });
 
         return new PlayerCollection(players);
     }
-
 
     getPlayersSnakes(players) {
         return players.getSnakes();
     }
 
-    createSnakeForPlayer(index) {
-        return this.createSnakeFromConfiguration(index, this.getSnakeConfigForPlayer(index));
-    }
-
-    createAlgorithmForPlayer(index) {
-        return this.createPlayersAlgorithm(index, this.getSnakeConfigForPlayer(index), this.getAlgorithmForPlayer(index));
-    }
-
-    getSnakeConfigForPlayer(index) {
-        return INITIAL_SNAKES[index];
-    }
-
-    getAlgorithmForPlayer(index) {
-        return this.playersAlgorithms[index];
+    getInitialSnakeData(index) {
+        return INITIAL_SNAKES_DATA[index];
     }
 }

@@ -1,6 +1,5 @@
 export default class Player {
-    constructor(index, name, playerAlgorithm, snake) {
-        this.index = index;
+    constructor(name, playerAlgorithm, snake) {
         this.name = name;
         this.algorithm = playerAlgorithm;
         this.snake = snake;
