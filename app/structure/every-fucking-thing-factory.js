@@ -20,13 +20,13 @@ export default class EveryFuckingThingFactory {
         });
     }
 
-    createSnake(configuration) {
+    createSnake(index, configuration) {
         const head = configuration.head;
         const body = [];
         for (let i = 0; i < configuration.length; i++) {
             body.push(Direction.createMovedPointInDirection(head, Direction.getOpposite(configuration.direction)));
         }
-        return new Snake(head, body, configuration.direction);
+        return new Snake(index, head, body, configuration.direction);
     }
 
     createGame(io) {
@@ -74,7 +74,7 @@ export default class EveryFuckingThingFactory {
             players.push(new Player(
                 name,
                 this.createAlgorithm(index, initialSnakeData, AlgorithmConstructor),
-                this.createSnake(initialSnakeData))
+                this.createSnake(index, initialSnakeData))
             );
         });
 
