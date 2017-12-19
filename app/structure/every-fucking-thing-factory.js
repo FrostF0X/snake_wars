@@ -57,7 +57,6 @@ export default class EveryFuckingThingFactory {
     }
 
     createPlayers() {
-        const players = [];
         const algorithms = AlgorithmLoader.load(SNAKES_DIR, INDEX_FILE);
         const maxSnakes = INITIAL_SNAKES_DATA.length;
 
@@ -65,16 +64,15 @@ export default class EveryFuckingThingFactory {
             throw new Error(`I refuse to let more than ${maxSnakes} snakes to the game! Don't ask me why ;-(`);
         }
 
-        algorithms.forEach(algorithm => {
+        const players = algorithms.map((algorithm, index) => {
             const AlgorithmConstructor = algorithm.constructor;
             const name = algorithm.name;
-            const index = players.length;
             const initialSnakeData = this.getInitialSnakeData(index);
 
-            players.push(new Player(
+            return new Player(
                 name,
                 this.createAlgorithm(index, initialSnakeData, AlgorithmConstructor),
-                this.createSnake(index, initialSnakeData))
+                this.createSnake(index, initialSnakeData)
             );
         });
 
