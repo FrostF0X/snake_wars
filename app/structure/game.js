@@ -3,7 +3,6 @@ import {DEAD, TURN_LEFT, TURN_RIGHT} from "./configuration";
 export default class Game {
 
     constructor(board, playersCollection, timeout, io){
-        console.log(playersCollection.get(0));
         this.board = board;
         this.alivePlayers = playersCollection;
         this.io = io;
