@@ -1,23 +1,13 @@
-import SnakeGordon from "../../snake-gordon/src/index";
-import BatmanSnake from "../../batman/index";
-import Michal from "../../snake/snake";
-
 export const TOP = "N";
 export const LEFT = "W";
 export const RIGHT = "E";
 export const DOWN = "S";
 
-export const INITIAL_SNAKES = [
+export const INITIAL_SNAKES_DATA = [
     {head: {x: 15, y: 15}, direction: LEFT, length: 3},
     {head: {x: 15, y: 45}, direction: RIGHT, length: 3},
     {head: {x: 45, y: 15}, direction: RIGHT, length: 3},
     {head: {x: 15, y: 45}, direction: RIGHT, length: 3},
-];
-
-export const PLAYERS_ALGORITHMS = [
-    SnakeGordon,
-    BatmanSnake,
-    Michal
 ];
 
 export const INITIAL_WALLS = [
@@ -42,4 +32,5 @@ export const HEAD_MARKER = "head";
 export const DEAD_MARKER = "dead";
 export const APPLE_MARKER = "🍎";
 
-
+export const SNAKES_DIR = 'snakes';
+export const INDEX_FILE = 'index.js';

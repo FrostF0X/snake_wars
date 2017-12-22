@@ -2,24 +2,25 @@ import {Direction} from "../logic/direction";
 import Snake from "./snake";
 import Board from "./board";
 import Player from "./player";
-import {INITIAL_SNAKES, INITIAL_WALLS, PLAYERS_ALGORITHMS, SIZE, TIMEOUT} from "./configuration";
+import {INITIAL_SNAKES_DATA, INITIAL_WALLS, SIZE, TIMEOUT, SNAKES_DIR, INDEX_FILE} from "./configuration";
 import PlayerCollection from "./player-collection";
 import Game from "./game";
 import Wall from "./wall";
+import AlgorithmLoader from "./algorithm-loader";
 
 export default class EveryFuckingThingFactory {
 
-    createPlayersAlgorithm(index, snakeSettings, Algorithm) {
+    createAlgorithm(index, configuration, Algorithm) {
         return new Algorithm({
             type: "snake",
-            start: snakeSettings,
+            start: configuration,
             timeout: TIMEOUT,
             board: SIZE,
             you: index,
         });
     }
 
-    createSnakeFromConfiguration(index, configuration) {
+    createSnake(index, configuration) {
         const head = configuration.head;
         const body = [];
         for (let i = 0; i < configuration.length; i++) {
@@ -31,6 +32,7 @@ export default class EveryFuckingThingFactory {
     createGame(io) {
         const players = this.createPlayers();
         const snakes = this.getPlayersSnakes(players);
+
         return new Game(this.createBoard(snakes), players, TIMEOUT, io);
     }
 
@@ -55,31 +57,33 @@ export default class EveryFuckingThingFactory {
     }
 
     createPlayers() {
-        return new PlayerCollection([
-            new Player(0, "andrzej", this.createAlgorithmForPlayer(0), this.createSnakeForPlayer(0)),
-            new Player(1, "maciek", this.createAlgorithmForPlayer(1), this.createSnakeForPlayer(1)),
-            new Player(2, "mwl", this.createAlgorithmForPlayer(2), this.createSnakeForPlayer(2))
-        ]);
-    }
+        const algorithms = AlgorithmLoader.load(SNAKES_DIR, INDEX_FILE);
+        const maxSnakes = INITIAL_SNAKES_DATA.length;
 
+        if (algorithms.length > maxSnakes) {
+            throw new Error(`I refuse to let more than ${maxSnakes} snakes to the game! Don't ask me why ;-(`);
+        }
+
+        const players = algorithms.map((algorithm, index) => {
+            const AlgorithmConstructor = algorithm.constructor;
+            const name = algorithm.name;
+            const initialSnakeData = this.getInitialSnakeData(index);
+
+            return new Player(
+                name,
+                this.createAlgorithm(index, initialSnakeData, AlgorithmConstructor),
+                this.createSnake(index, initialSnakeData)
+            );
+        });
+
+        return new PlayerCollection(players);
+    }
 
     getPlayersSnakes(players) {
         return players.getSnakes();
     }
 
-    createSnakeForPlayer(index) {
-        return this.createSnakeFromConfiguration(index, this.getSnakeConfigForPlayer(index));
-    }
-
-    createAlgorithmForPlayer(index) {
-        return this.createPlayersAlgorithm(index, this.getSnakeConfigForPlayer(index), this.getAlgorithmForPlayer(index));
-    }
-
-    getSnakeConfigForPlayer(index) {
-        return INITIAL_SNAKES[index];
-    }
-
-    getAlgorithmForPlayer(index) {
-        return PLAYERS_ALGORITHMS[index];
+    getInitialSnakeData(index) {
+        return INITIAL_SNAKES_DATA[index];
     }
 }

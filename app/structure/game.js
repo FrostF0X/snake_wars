@@ -14,12 +14,14 @@ export default class Game {
     }
 
     endGame(){
-        if(this.alivePlayers.getLength() === 1){
-            throw new Error("We have a winner: " + this.alivePlayers.get(0).getName());
-        }else{
-            throw new Error("Draw, candidates: "
-                + this.alivePlayers.get(0).getName()
-                + " and " + this.alivePlayers.get(0).getName());
+        if (this.alivePlayers.getLength() === 1) {
+            console.log("We have a winner: " + this.alivePlayers.get(0).name);
+        } else if (this.alivePlayers.getLength() === 0) {
+            throw new Error("No players");
+        } else {
+            console.log("Draw, candidates: "
+                + this.alivePlayers.get(0).name
+                + " and " + this.alivePlayers.get(0).name);
         }
     }
 
@@ -30,7 +32,7 @@ export default class Game {
         }
 
         this.movePlayer();
-        setTimeout(() => this.nextMove(),10);
+        setTimeout(() => this.nextMove(), 150);
     }
 
     movePlayer(){
