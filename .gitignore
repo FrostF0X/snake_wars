@@ -57,7 +57,9 @@ typings/
 # Idea
 .idea/workspace.xml
 .idea/tasks.xml
+.idea/dictionaries
 
 # Project specific
 snakes
 dist
+tmp
