@@ -20,11 +20,11 @@ import Wall from "./wall";
 export default class EveryFuckingThingFactory {
 
     public createAlgorithm(index: number,
-                           startPoint: Point,
+                           initialSnakeConfiguration: InitialSnakeConfiguration,
                            playerAlgorithmConstructor: PlayerAlgorithmConstructor): PlayerAlgorithm {
         return new playerAlgorithmConstructor({
             board: SIZE,
-            start: startPoint,
+            start: initialSnakeConfiguration,
             timeout: TIMEOUT,
             type: "snake",
             you: index,
@@ -87,7 +87,7 @@ export default class EveryFuckingThingFactory {
 
                 return new Player(
                     name,
-                    this.createAlgorithm(index, initialSnakeConfiguration.getHead(), algorithmConstructor),
+                    this.createAlgorithm(index, initialSnakeConfiguration, algorithmConstructor),
                     this.createSnake(index, initialSnakeConfiguration)
                 );
             });
