@@ -4,12 +4,9 @@
     //output compile files to tmp directory and must be redirected by gulp
     "outDir": "./tmp/tsc",
     "declaration": true,
-    "rootDir": "app-typescript",
+    "rootDir": "app",
     "target": "es5"
   },
-  "include": [
-    "app-typescript/**/*"
-  ],
   "paths": [
     "node_modules"
   ]
