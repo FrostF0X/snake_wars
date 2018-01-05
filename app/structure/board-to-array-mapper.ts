@@ -30,7 +30,7 @@ export default class BoarToArrayMapper {
 
     private static fillWithAliveSnake(array: any[][], snake: Snake): void {
         array[snake.getHead().getX()][snake.getHead().getX()] = {
-            [BoardCell.Player]: snake.getIndex(), [BoardCell.Head]: snake.getIndex(),
+            [BoardCell.Player]: snake.getIndex(), [BoardCell.Head]: snake.getDirection(),
         };
 
         snake.getBody().forEach((point: Point) => {
