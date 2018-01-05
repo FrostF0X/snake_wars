@@ -20,6 +20,10 @@ export default class Snake {
         return this.index;
     }
 
+    public getDirection(): Direction {
+        return this.direction;
+    }
+
     public getBounds(): Point[] {
         return this.body.splice(0).concat(this.head);
     }
