@@ -1,0 +1,27 @@
+{
+  "name": "snake-wars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node index.js",
+    "watch": "gulp watch",
+    "build": "gulp build",
+    "postinstall": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es3": "^1.0.1",
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-cli": "^1.4.0",
+    "socket.io": "^2.0.4",
+    "synaptic": "^1.1.4"
+  }
+}

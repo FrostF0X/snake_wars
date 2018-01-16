@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 
 gulp.task('build', () =>
-    gulp.src('app/**')
+    gulp.src('src/**')
         .pipe(babel({
             presets: ['env']
         }))

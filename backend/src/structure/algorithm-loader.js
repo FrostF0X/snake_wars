@@ -5,6 +5,7 @@ export default class AlgorithmLoader {
     static load(directory, indexFile) {
         const algorithms = [];
 
+
         fs.readdirSync(`./${directory}`).forEach((item) => {
             console.log(`Loading ${item}`);
 
