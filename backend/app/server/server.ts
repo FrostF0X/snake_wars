@@ -2,9 +2,9 @@ import * as Express from "express";
 import * as Http from "http";
 import * as SocketIO from "socket.io";
 
-const app: Express.Express = Express();
-const server: Http.Server = Http.createServer();
-const socket: SocketIO.Server = SocketIO();
+const app: Express.Application = Express();
+const server: Http.Server = Http.createServer(app);
+const socket: SocketIO.Server = SocketIO(server);
 
 app.get("/", (req: Express.Request, res: Express.Response) => {
     res.send("<h1>Hello</h1>");
