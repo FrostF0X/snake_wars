@@ -1,7 +1,33 @@
 {
-  "name": "$package_name$",
-  "version": "0.0.1",
+  "name": "snake-wars",
+  "version": "0.1.0",
+  "description": "Snake wars boot gaming playing platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run backend-start & npm run frontend-start",
+    "frontend-start": "cd frontend && npm start",
+    "backend-start": "cd backend && npm start",
+    "watch": "npm run backend-watch & npm run frontend-watch",
+    "frontend-watch": "cd frontend && npm watch",
+    "backend-watch": "cd backend && npm watch",
+    "test": "npm run frontend-test",
+    "frontend-test": "cd frontend && npm test",
+    "postinstall": "npm run frontend-install && npm run backend-install",
+    "frontend-install": "cd frontend && npm install",
+    "backend-install": "cd backend && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrostF0X/snake_wars.git"
+  },
+  "author": "frost_fox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrostF0X/snake_wars/issues"
+  },
+  "homepage": "https://github.com/FrostF0X/snake_wars#readme",
   "dependencies": {
-    $END$
+    "snake-wars-frontend": "file:frontend",
+    "snake-wars-backend": "file:backend"
   }
 }
