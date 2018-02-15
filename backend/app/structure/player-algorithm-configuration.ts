@@ -1,4 +1,4 @@
-import PlayerAlgorithmConstructor from "./PlayerAlgorithmConstructor";
+import PlayerAlgorithmConstructor from "./player-algorithm-constructor";
 
 export default class PlayerAlgorithmConfiguration {
     constructor(private name: string, private constructor: PlayerAlgorithmConstructor) {

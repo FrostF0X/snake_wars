@@ -9,7 +9,7 @@ import InitialWallConfiguration from "./initial-wall-configuration";
 import Player from "./player";
 import PlayerAlgorithm from "./player-algorithm";
 import PlayerAlgorithmConfiguration from "./player-algorithm-configuration";
-import PlayerAlgorithmConstructor from "./PlayerAlgorithmConstructor";
+import PlayerAlgorithmConstructor from "./player-algorithm-constructor";
 import PlayersCollection from "./players-collection";
 import Point from "./point";
 import Snake from "./snake";
