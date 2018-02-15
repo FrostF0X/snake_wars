@@ -14,7 +14,8 @@
     "frontend-test": "cd frontend && npm test",
     "postinstall": "npm run frontend-install && npm run backend-install",
     "frontend-install": "cd frontend && npm install",
-    "backend-install": "cd backend && npm install"
+    "backend-install": "cd backend && npm install",
+    "seed": "./seed.sh"
   },
   "repository": {
     "type": "git",
