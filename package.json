@@ -25,9 +25,5 @@
   "bugs": {
     "url": "https://github.com/FrostF0X/snake_wars/issues"
   },
-  "homepage": "https://github.com/FrostF0X/snake_wars#readme",
-  "dependencies": {
-    "snake-wars-frontend": "file:frontend",
-    "snake-wars-backend": "file:backend"
-  }
+  "homepage": "https://github.com/FrostF0X/snake_wars#readme"
 }
