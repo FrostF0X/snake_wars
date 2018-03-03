@@ -20,9 +20,9 @@ function main {
     mkdir "$SNAKES_DIR";
     cd "$SNAKES_DIR";
 
-    git clone https://github.com/andrzejdus/snake-gordon.git snake1
-    git clone https://github.com/andrzejdus/snake-gordon.git snake2
-    git clone https://github.com/andrzejdus/snake-gordon.git snake3
+    git clone git@github.com:FrostF0X/snake-gordon.git snake1
+    git clone git@github.com:FrostF0X/snake-gordon.git snake2
+    git clone git@github.com:FrostF0X/snake-gordon.git snake3
 
 }
 
