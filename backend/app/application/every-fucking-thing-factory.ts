@@ -1,19 +1,19 @@
-import { DirectionUtils } from "../logic/direction-utils";
-import AlgorithmLoader from "./algorithm-loader";
-import Board from "./board";
-import { INDEX_FILE, INITIAL_SNAKES_DATA, INITIAL_WALLS_DATA, SIZE, SNAKES_DIR, TIMEOUT } from "./configuration";
-import Game from "./game";
-import InitialSnakeConfiguration from "./initial-snake-configuration";
+import { DirectionUtils } from "../game/basic/direction-utils";
+import Point from "../game/basic/point";
+import Board from "../game/board/board";
+import Game from "../game/game";
+import Player from "../game/player/player";
+import PlayerAlgorithm from "../game/player/player-algorithm";
+import PlayerAlgorithmConfiguration from "../game/player/player-algorithm-configuration";
+import PlayerAlgorithmConstructor from "../game/player/player-algorithm-constructor";
+import PlayersCollection from "../game/player/players-collection";
+import InitialSnakeConfiguration from "../game/snake/initial-snake-configuration";
+import Snake from "../game/snake/snake";
 import Server = SocketIO.Server;
-import InitialWallConfiguration from "./initial-wall-configuration";
-import Player from "./player";
-import PlayerAlgorithm from "./player-algorithm";
-import PlayerAlgorithmConfiguration from "./player-algorithm-configuration";
-import PlayerAlgorithmConstructor from "./player-algorithm-constructor";
-import PlayersCollection from "./players-collection";
-import Point from "./point";
-import Snake from "./snake";
-import Wall from "./wall";
+import InitialWallConfiguration from "../game/wall/initial-wall-configuration";
+import Wall from "../game/wall/wall";
+import AlgorithmLoader from "./algorithm-loader";
+import { INDEX_FILE, INITIAL_SNAKES_DATA, INITIAL_WALLS_DATA, SIZE, SNAKES_DIR, TIMEOUT } from "./configuration";
 
 // used int index.js file
 // noinspection JSUnusedGlobalSymbols

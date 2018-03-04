@@ -1,5 +1,5 @@
+import Snake from "../snake/snake";
 import Player from "./player";
-import Snake from "./snake";
 
 export default class PlayersCollection {
     private currentIndex: number = 0;

@@ -1,6 +1,6 @@
-import Board from "./board";
+import Board from "../board/board";
+import Snake from "../snake/snake";
 import PlayerAlgorithm from "./player-algorithm";
-import Snake from "./snake";
 
 export default class Player {
     private algorithm: PlayerAlgorithm;

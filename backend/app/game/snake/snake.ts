@@ -1,6 +1,6 @@
-import { DirectionUtils } from "../logic/direction-utils";
-import { Direction } from "./configuration";
-import Point from "./point";
+import { Direction } from "../../application/configuration";
+import { DirectionUtils } from "../basic/direction-utils";
+import Point from "../basic/point";
 
 export default class Snake {
     private lastTailPoint: Point;

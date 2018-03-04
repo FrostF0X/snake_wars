@@ -1,9 +1,9 @@
-import Board from "./board";
 import Server = SocketIO.Server;
-import { MoveResult, Turn } from "./configuration";
-import Player from "./player";
-import PlayerCollection from "./players-collection";
-import Snake from "./snake";
+import { MoveResult, Turn } from "../application/configuration";
+import Board from "./board/board";
+import Player from "./player/player";
+import PlayerCollection from "./player/players-collection";
+import Snake from "./snake/snake";
 
 export default class Game {
     // Should be used for displaying results

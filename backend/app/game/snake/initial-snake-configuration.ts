@@ -1,5 +1,5 @@
-import { Direction } from "./configuration";
-import Point from "./point";
+import { Direction } from "../../application/configuration";
+import Point from "../basic/point";
 
 export default class InitialSnakeConfiguration {
     constructor(private head: Point, private direction: Direction, private length: number) {

@@ -1,7 +1,7 @@
-import Dimension from "./dimension";
-import InitialSnakeConfiguration from "./initial-snake-configuration";
-import InitialWallConfiguration from "./initial-wall-configuration";
-import Point from "./point";
+import Dimension from "../game/basic/dimension";
+import Point from "../game/basic/point";
+import InitialSnakeConfiguration from "../game/snake/initial-snake-configuration";
+import InitialWallConfiguration from "../game/wall/initial-wall-configuration";
 
 export enum Direction {
     Top = "N",

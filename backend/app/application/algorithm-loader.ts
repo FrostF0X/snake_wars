@@ -1,6 +1,6 @@
 import * as FileSystem from "fs";
-import PlayerAlgorithmConfiguration from "./player-algorithm-configuration";
-import PlayerAlgorithmConstructor from "./player-algorithm-constructor";
+import PlayerAlgorithmConfiguration from "../game/player/player-algorithm-configuration";
+import PlayerAlgorithmConstructor from "../game/player/player-algorithm-constructor";
 
 export default class AlgorithmLoader {
 

@@ -1,5 +1,5 @@
-import { Direction } from "../structure/configuration";
-import Point from "../structure/point";
+import { Direction } from "../../application/configuration";
+import Point from "./point";
 
 export class DirectionUtils {
     public static createMovedPointInDirection(point: Point, direction: Direction): Point {

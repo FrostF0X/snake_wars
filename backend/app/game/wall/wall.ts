@@ -1,4 +1,4 @@
-import Point from "./point";
+import Point from "../basic/point";
 
 export default class Wall {
     constructor(private bounds: Point[]) {
