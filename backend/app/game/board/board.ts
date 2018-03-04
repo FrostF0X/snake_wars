@@ -1,9 +1,9 @@
-import { MoveResult } from "../../application/configuration";
 import Dimension from "../basic/dimension";
 import Point from "../basic/point";
 import Snake from "../snake/snake";
 import Wall from "../wall/wall";
 import BoarToArrayMapper from "./board-to-array-mapper";
+import { MoveResult } from "./move-result";
 
 export default class Board {
     private aliveSnakes: Snake[];

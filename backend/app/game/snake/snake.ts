@@ -1,4 +1,4 @@
-import { Direction } from "../../application/configuration";
+import { Direction } from "../basic/direction";
 import { DirectionUtils } from "../basic/direction-utils";
 import Point from "../basic/point";
 

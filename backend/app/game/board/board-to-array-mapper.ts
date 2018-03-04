@@ -1,7 +1,7 @@
-import { BoardCell } from "../../application/configuration";
 import Point from "../basic/point";
 import Snake from "../snake/snake";
 import Board from "./board";
+import { BoardCell } from "./board-cell";
 
 export default class BoarToArrayMapper {
     public static mapToArray(board: Board): any[][] {

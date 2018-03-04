@@ -1,4 +1,4 @@
-import { Direction } from "../../application/configuration";
+import { Direction } from "./direction";
 import Point from "./point";
 
 export class DirectionUtils {

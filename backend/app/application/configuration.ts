@@ -1,31 +1,8 @@
 import Dimension from "../game/basic/dimension";
+import { Direction } from "../game/basic/direction";
 import Point from "../game/basic/point";
 import InitialSnakeConfiguration from "../game/snake/initial-snake-configuration";
 import InitialWallConfiguration from "../game/wall/initial-wall-configuration";
-
-export enum Direction {
-    Top = "N",
-    Left = "W",
-    Right = "E",
-    Down = "S",
-}
-
-export enum MoveResult {
-    Dead = "dead",
-    Alive = "alive",
-}
-
-export enum Turn {
-    Left = "L",
-    Right = "R",
-}
-
-export enum BoardCell {
-    Player = "player",
-    Head = "head",
-    Dead = "dead",
-    Apple = "🍎",
-}
 
 export const INITIAL_SNAKES_DATA: InitialSnakeConfiguration[] = [
     new InitialSnakeConfiguration(new Point(15, 15), Direction.Left, 3),

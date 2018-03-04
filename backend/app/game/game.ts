@@ -1,6 +1,7 @@
 import Server = SocketIO.Server;
-import { MoveResult, Turn } from "../application/configuration";
+import { Turn } from "./basic/turn";
 import Board from "./board/board";
+import { MoveResult } from "./board/move-result";
 import Player from "./player/player";
 import PlayerCollection from "./player/players-collection";
 import Snake from "./snake/snake";
