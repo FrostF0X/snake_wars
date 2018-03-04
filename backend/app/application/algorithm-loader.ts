@@ -4,17 +4,20 @@ import PlayerAlgorithmConstructor from "../game/player/player-algorithm-construc
 
 export default class AlgorithmLoader {
 
-    public static load(directory: string, indexFile: string): PlayerAlgorithmConfiguration[] {
+    constructor(private directory: string, private indexFile: string) {
+    }
+
+    public load(): PlayerAlgorithmConfiguration[] {
         const algorithms: PlayerAlgorithmConfiguration[] = [];
 
-        if (FileSystem.existsSync(`./${directory}`) === false) {
+        if (FileSystem.existsSync(`./${this.directory}`) === false) {
             return [];
         }
 
-        FileSystem.readdirSync(`./${directory}`).forEach((item: string) => {
+        FileSystem.readdirSync(`./${this.directory}`).forEach((item: string) => {
             console.log(`Loading ${item}`);
 
-            const indexPath: string = `../../${directory}/${item}/${indexFile}`;
+            const indexPath: string = `../../${this.directory}/${item}/${this.indexFile}`;
 
             try {
                 algorithms.push(
