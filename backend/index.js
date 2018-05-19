@@ -1,4 +1,4 @@
-const Factory = require("./dist/structure/every-fucking-thing-factory").default;
+const Factory = require("./dist/application/every-fucking-thing-factory").default;
 const io = require("./dist/server/server").default;
 
 let factory = new Factory();
