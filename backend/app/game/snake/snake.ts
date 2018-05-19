@@ -25,7 +25,7 @@ export default class Snake {
     }
 
     public getBounds(): Point[] {
-        return this.body.splice(0).concat(this.head);
+        return this.body.slice(0).concat(this.head);
     }
 
     public eatApple(): void {

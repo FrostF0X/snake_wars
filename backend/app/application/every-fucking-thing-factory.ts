@@ -37,10 +37,13 @@ export default class EveryFuckingThingFactory {
     public createWall(configuration: InitialWallConfiguration): Wall {
         const bounds: Point[] = [configuration.getStart()];
 
+        let lastPoint: Point = configuration.getStart();
+
         for (let i: number = 0; i < configuration.getLength(); i++) {
-            bounds.push(DirectionUtils.createMovedPointInDirection(
-                configuration.getStart(), DirectionUtils.getOpposite(configuration.getDirection())
-            ));
+            lastPoint = DirectionUtils.createMovedPointInDirection(
+                lastPoint, DirectionUtils.getOpposite(configuration.getDirection())
+            );
+            bounds.push(lastPoint);
         }
 
         return new Wall(bounds);

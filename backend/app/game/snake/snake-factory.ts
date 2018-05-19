@@ -14,10 +14,13 @@ export default class SnakeFactory {
     private createBody(configuration: InitialSnakeConfiguration): Point[] {
         const body: Point[] = [];
 
+        let lastPoint: Point = configuration.getHead();
+
         for (let i: number = 0; i < configuration.getLength(); i++) {
-            body.push(DirectionUtils.createMovedPointInDirection(
-                configuration.getHead(), DirectionUtils.getOpposite(configuration.getDirection())
-            ));
+            lastPoint = DirectionUtils.createMovedPointInDirection(
+                lastPoint, DirectionUtils.getOpposite(configuration.getDirection())
+            );
+            body.push(lastPoint);
         }
 
         return body;

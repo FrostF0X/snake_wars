@@ -9,4 +9,8 @@ export default class Point {
     public getY(): number {
         return this.y;
     }
+
+    public equalTo(point: Point): boolean {
+        return (this.getX() === point.getX()) && (this.getY() === point.getY());
+    }
 }

@@ -107,7 +107,7 @@ export default class Board {
     }
 
     private checkCollisionWithPoint(point1: Point, point2: Point): boolean {
-        return (point1.getX() === point2.getX()) && (point1.getY() === point2.getY());
+        return point2.equalTo(point1);
     }
 
     private getOtherAliveSnakes(snake: Snake): Snake[] {

@@ -5,6 +5,7 @@ export default class PlayersCollection {
     private currentIndex: number = 0;
 
     constructor(private players: Player[]) {
+        this.decreaseIndex();
     }
 
     public deletePlayerByName(playerName: string): Player {
